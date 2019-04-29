@@ -11,10 +11,14 @@ import { SalesForceService } from 'src/app/libs/services/SalesForce.service';
 })
 export class ContactsComponent implements OnInit {
 
+  private contacts;
+
   constructor(private salesForceSvc: SalesForceService) { }
 
   ngOnInit() {
-    this.salesForceSvc.getContacts();
+    this.salesForceSvc.getContacts().then(data => {
+      this.contacts = data;
+    });
   }
 
 }

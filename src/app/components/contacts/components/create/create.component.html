@@ -1,0 +1,15 @@
+
+<div class="container mt-5">
+  <div class="panel panel-default">
+    <div class="panel-heading">Create New Contact</div>
+    <div class="panel-body">
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" type="text" name="Name" formControlName="Name">
+          </div>
+          <input class="btn btn-primary" type="submit" value="Submit" [disabled]="!form.valid">
+      </form>
+    </div>
+  </div>
+</div>

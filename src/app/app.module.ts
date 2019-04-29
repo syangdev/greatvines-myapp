@@ -7,16 +7,20 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './libs/auth/auth.service';
 import { AuthGuard } from './libs/auth/auth.guard';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { CreateComponent } from './components/contacts/components/create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ContactsComponent
+    ContactsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
