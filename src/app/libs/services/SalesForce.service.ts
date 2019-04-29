@@ -1,16 +1,15 @@
 import { Injectable } from "@angular/core";
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class SalesForceService {
     
     private oauth2;
-    constructor() {
-        this.oauth2 = JSON.parse(localStorage.getItem('oauth2'));
+    constructor(private authSvc: AuthService) {
+        this.oauth2 = this.authSvc.getOAuth2();
     }
 
     getContacts() {
-        console.log({oauth2: this.oauth2});
-
         // curl https://yourInstance.salesforce.com/services/data/v20.0/query/?q=SELECT+name+from+Account -H "Authorization: Bearer token"
         return fetch(`${this.oauth2.instance_url}/services/data/v20.0/query/?q=SELECT+name+from+Account`, {
             headers: {
