@@ -2,10 +2,13 @@
 <div class="container mt-5">
   <!-- <h2>Login</h2> -->
   <div class="panel panel-default">
-    <div class="panel-heading">Contacts</div>
+    <div class="panel-heading">
+        <span>Contacts</span>
+        <span style="float:right; margin-top:-0.5em;">
+            <a class="btn btn-primary" href="contacts/create">New</a>
+        </span>
+    </div>
     <div class="panel-body">
-      <a class="btn btn-primary" href="contacts/create">New</a>
-      <hr/>
       <table *ngIf="contacts" class="table">
         <thead>
           <tr>

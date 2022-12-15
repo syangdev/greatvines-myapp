@@ -24,14 +24,16 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      Name: new FormControl(null, Validators.required)
+      FirstName: new FormControl(null, Validators.required),
+      LastName: new FormControl(null, Validators.required)
     });
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.salesForceSvc.createContact({
-        Name: this.form.controls.Name.value
+        FirstName: this.form.controls.FirstName.value,
+        LastName: this.form.controls.LastName.value
       }).then(data => {
         if (data && data.success) {
           this.router.navigate(['contacts']);

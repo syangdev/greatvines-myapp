@@ -11,7 +11,7 @@ export class SalesForceService {
 
     getContacts() {
         // curl https://yourInstance.salesforce.com/services/data/v20.0/query/?q=SELECT+name+from+Account -H "Authorization: Bearer token"
-        return fetch(`${this.oauth2.instance_url}/services/data/v20.0/query/?q=SELECT+name+from+Account`, {
+        return fetch(`${this.oauth2.instance_url}/services/data/v46.0/query/?q=SELECT Name FROM Contact ORDER BY LastModifiedDate DESC LIMIT 20`, {
             headers: {
                 'Authorization': `Bearer ${this.oauth2.access_token}`,
             }
@@ -20,9 +20,9 @@ export class SalesForceService {
         });
     }
 
-    createContact(contact: {Name: string}) {
+    createContact(contact: {FirstName: string, LastName: string}) {
         // curl https://yourInstance.salesforce.com/services/data/v20.0/sobjects/Account/ -H "Authorization: Bearer token -H "Content-Type: application/json" -d "@newaccount.json"
-        return fetch(`${this.oauth2.instance_url}/services/data/v20.0/sobjects/Account/`, {
+        return fetch(`${this.oauth2.instance_url}/services/data/v46.0/sobjects/Contact/`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${this.oauth2.access_token}`,
